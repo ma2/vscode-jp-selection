@@ -1,0 +1,52 @@
+{
+  "name": "jp-selection",
+  "displayName": "Japanese Text Selection",
+  "description": "Double-click to select contiguous Japanese text (hiragana, katakana, kanji)",
+  "version": "0.0.1",
+  "publisher": "ma2",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "configuration": {
+      "title": "Japanese Selection",
+      "properties": {
+        "jpSelection.additionalSeparators": {
+          "type": "string",
+          "default": "",
+          "description": "追加の区切り文字。ここに含まれる文字で選択が止まります。例: 「_#@」",
+          "scope": "resource"
+        },
+        "jpSelection.doubleClickThresholdMs": {
+          "type": "number",
+          "default": 400,
+          "minimum": 100,
+          "maximum": 2000,
+          "description": "ダブルクリック判定の時間閾値（ミリ秒）",
+          "scope": "window"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "TS_NODE_PROJECT=tsconfig.test.json mocha"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.82.0",
+    "mocha": "^11.7.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}
